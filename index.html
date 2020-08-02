@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><title>Welcome | DNS Historian (A dns monitoring API)</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="assets/style.css">
+<script type="text/javascript" src="assets/jquery.js"></script>
+<!-- Place this tag in your head or just before your close body tag. -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  <style type="text/css">
+    h1 { margin: 0 0 30px 0; background: url(/static/logo.png) no-repeat center; height: 165px; }
+    h1 span, p.tagline { display: none; }
+  </style>
+  <script type="text/javascript">
+    $(function() {
+      $('h1').bind('mousedown contextmenu', function(event) {
+        if (event.button != 2)
+          return;
+        var box = $('div.logohint');
+        if (!box.is(':visible'))
+          box.animate({'height': 'show', 'opacity': 'show'}, 100);
+        event.preventDefault();
+        event.returnValue = false;
+        return false;
+      });
+    });
+  </script>
+
+</head><body><div class="box">
+
+    <h2 style="font-size:38px">DNS Historian</h2>
+    <img style="width:100%" src="assets/dns_historian_duck.jpg">
+
+  <blockquote>
+DNS Historian takes a hostname, periodically looks up common record types (NS,   MX, A, TXT, CNAME, AAAA) and saves the result as flatfiles in json format.
+    It's <a href="https://github.com/vivithemage/dns-historian/blob/master/LICENCE">GPL2 licensed</a>!
+  </blockquote>
+  <p class="latestver">
+    <strong>Latest Version:</strong>
+    <a href="https://github.com/vivithemage/dns-historian/archive/master.zip" title="Download tarball">Master</a>
+  </p><h2>Simple to Use</h2>
+
+  Add a domain:
+  <pre><span class="ig">$ </span>curl -X POST -H "Content-Type: application/json" \
+-d '{"hostname":"example.com"}' http://localhost:5000/write.json</span></pre>
+  Retrieve a domain:
+
+<pre><span class="ig">$ </span>curl -X POST -H "Content-Type: application/json" \
+-d '{"hostname":"example.com"}' http://localhost:5000/read.json</span></pre>
+
+  <h2>And Easy to Setup</h2>
+  <pre><span class="ig">$ </span>pip install flask dnspython requests
+<span class="ig">$ </span>python dns-historian.py
+<span class="ig"> * Running on http://localhost:5000/</span></pre>
+
+  Monitor changes:
+<pre><span class="ig">$ </span>python updater.py
+<span class="ig"> updating: example.com
+ response: {"message": "success"}
+ Retrieving fresh directory listing and starting update again...</span></pre>
+
+  <!-- Place this tag where you want the button to render. -->
+  <span style="float:right"><a aria-label="Star vivithemage/dns-historian on GitHub" data-style="mega" data-icon="octicon-star" href="https://github.com/vivithemage/dns-historian" class="github-button">Star</a></span>
+  <h2>Interested?</h2>
+  <ul>
+    <li><a href="https://github.com/vivithemage/dns-historian/archive/master.zip">Download latest release</a> (0.01)
+    </li>
+    <li><a href="https://github.com/vivithemage/dns-historian/">Fork it on github</a> </li>
+    <li><a href="https://github.com/vivithemage/dns-historian/issues">Add issues and feature requests</a>
+  </li></ul>
+
+
+<a href="https://github.com/vivithemage/dns-historian/"><img style="position: fixed; top: 0; right: 0; border: 0;" src="assets/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+
+  </p><p class="footer">
+  © Copyright Vixre 2017. Site template: <a href="https://github.com/pallets/flask-website">flask</a>. Logo painted by <a href="https://www.facebook.com/lucy.a.robinson.5?fref=ts">Lucy Robinson</a>
+</p></div></body></html>
